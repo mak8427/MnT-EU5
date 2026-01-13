@@ -1,0 +1,427 @@
+mnt_is_rgo_building_hidden_by_good = {
+	scope = goods
+	saved_scopes = { player }
+
+	is_shown = {
+		OR = {
+
+			AND = {
+				this = goods:wheat
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_wheat }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_wheat } }
+				}
+			}
+
+			AND = {
+				this = goods:iron
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_iron }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_iron } }
+				}
+			}
+
+			AND = {
+				this = goods:coal
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_coal }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_coal } }
+				}
+			}
+
+			AND = {
+				this = goods:copper
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_copper }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_copper } }
+				}
+			}
+
+			AND = {
+				this = goods:goods_gold
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_goods_gold }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_goods_gold } }
+				}
+			}
+
+			AND = {
+				this = goods:silver
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_silver }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_silver } }
+				}
+			}
+
+			AND = {
+				this = goods:cotton
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_cotton }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_cotton } }
+				}
+			}
+
+			AND = {
+				this = goods:silk
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_silk }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_silk } }
+				}
+			}
+
+			AND = {
+				this = goods:wool
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_wool }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_wool } }
+				}
+			}
+
+			AND = {
+				this = goods:sugar
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_sugar }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_sugar } }
+				}
+			}
+
+			AND = {
+				this = goods:tea
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_tea }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_tea } }
+				}
+			}
+
+			AND = {
+				this = goods:coffee
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_coffee }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_coffee } }
+				}
+			}
+
+			AND = {
+				this = goods:cocoa
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_cocoa }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_cocoa } }
+				}
+			}
+
+			AND = {
+				this = goods:tobacco
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_tobacco }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_tobacco } }
+				}
+			}
+
+			AND = {
+				this = goods:pepper
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_pepper }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_pepper } }
+				}
+			}
+
+			AND = {
+				this = goods:cloves
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_cloves }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_cloves } }
+				}
+			}
+
+			AND = {
+				this = goods:dyes
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_dyes }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_dyes } }
+				}
+			}
+
+			AND = {
+				this = goods:fur
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_fur }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_fur } }
+				}
+			}
+
+			AND = {
+				this = goods:ivory
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_ivory }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_ivory } }
+				}
+			}
+
+			AND = {
+				this = goods:gems
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_gems }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_gems } }
+				}
+			}
+
+			AND = {
+				this = goods:amber
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_amber }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_amber } }
+				}
+			}
+
+			AND = {
+				this = goods:pearls
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_pearls }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_pearls } }
+				}
+			}
+
+			AND = {
+				this = goods:incense
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_incense }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_incense } }
+				}
+			}
+
+			AND = {
+				this = goods:salt
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_salt }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_salt } }
+				}
+			}
+
+			AND = {
+				this = goods:fish
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_fish }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_fish } }
+				}
+			}
+
+			AND = {
+				this = goods:lumber
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_lumber }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_lumber } }
+				}
+			}
+
+			AND = {
+				this = goods:stone
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_stone }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_stone } }
+				}
+			}
+
+			AND = {
+				this = goods:marble
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_marble }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_marble } }
+				}
+			}
+
+			AND = {
+				this = goods:clay
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_clay }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_clay } }
+				}
+			}
+
+			AND = {
+				this = goods:sand
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_sand }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_sand } }
+				}
+			}
+
+			AND = {
+				this = goods:lead
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_lead }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_lead } }
+				}
+			}
+
+			AND = {
+				this = goods:tin
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_tin }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_tin } }
+				}
+			}
+
+			AND = {
+				this = goods:mercury
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_mercury }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_mercury } }
+				}
+			}
+
+			AND = {
+				this = goods:alum
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_alum }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_alum } }
+				}
+			}
+
+			AND = {
+				this = goods:saltpeter
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_saltpeter }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_saltpeter } }
+				}
+			}
+
+			AND = {
+				this = goods:beeswax
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_beeswax }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_beeswax } }
+				}
+			}
+
+			AND = {
+				this = goods:horses
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_horses }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_horses } }
+				}
+			}
+
+			AND = {
+				this = goods:elephants
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_elephants }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_elephants } }
+				}
+			}
+
+			AND = {
+				this = goods:livestock
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_livestock }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_livestock } }
+				}
+			}
+
+			AND = {
+				this = goods:wild_game
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_wild_game }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_wild_game } }
+				}
+			}
+
+			AND = {
+				this = goods:rice
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_rice }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_rice } }
+				}
+			}
+
+			AND = {
+				this = goods:maize
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_maize }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_maize } }
+				}
+			}
+
+			AND = {
+				this = goods:millet
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_millet }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_millet } }
+				}
+			}
+
+			AND = {
+				this = goods:potato
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_potato }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_potato } }
+				}
+			}
+
+			AND = {
+				this = goods:legumes
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_legumes }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_legumes } }
+				}
+			}
+
+			AND = {
+				this = goods:fruit
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_fruit }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_fruit } }
+				}
+			}
+
+			AND = {
+				this = goods:olives
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_olives }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_olives } }
+				}
+			}
+
+			AND = {
+				this = goods:wine
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_wine }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_wine } }
+				}
+			}
+
+			AND = {
+				this = goods:fiber_crops
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_fiber_crops }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_fiber_crops } }
+				}
+			}
+
+			AND = {
+				this = goods:chili
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_chili }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_chili } }
+				}
+			}
+
+			AND = {
+				this = goods:saffron
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_saffron }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_saffron } }
+				}
+			}
+
+			AND = {
+				this = goods:medicaments
+				OR = {
+					is_target_in_global_variable_list = { name = mnt_global_hidden_buildings target = building_type:RGO_building_medicaments }
+					scope:player = { is_target_in_variable_list = { name = mnt_country_hidden_buildings target = building_type:RGO_building_medicaments } }
+				}
+			}
+		}
+	}
+}
+
+

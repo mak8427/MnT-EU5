@@ -20,6 +20,7 @@ biyearly_country_pulse  = {
 monthly_country_pulse = {
 	on_actions = {
 		monthly_country_pulse_MnT
+		hide_buildings_on_start
 	}
 }
 
@@ -38,6 +39,10 @@ on_game_start_MnT = {
 				}
 				trigger_event_silently = { id = mnt_goods_value.1 }
 			}
+
+
+
+
 		}
 	}
 }
@@ -86,4 +91,64 @@ monthly_country_pulse_MnT = {
 		# Aggregate the total diplomatic spending demands in each market
 		diplomatic_spending.2
 	}
+
+
+}
+
+hide_buildings_on_start = {
+    effect = {
+        # Hide all RGO buildings globally
+        mnt_global_hide_building = { building_type = building_type:RGO_building_alum }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_amber }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_beeswax }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_chili }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_clay }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_cloves }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_coal }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_cocoa }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_coffee }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_copper }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_cotton }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_dyes }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_elephants }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_fiber_crops }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_fish }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_fruit }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_fur }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_gems }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_goods_gold }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_horses }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_incense }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_iron }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_ivory }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_lead }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_legumes }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_livestock }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_lumber }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_maize }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_marble }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_medicaments }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_mercury }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_millet }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_olives }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_pearls }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_pepper }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_potato }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_rice }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_saffron }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_salt }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_saltpeter }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_sand }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_silk }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_silver }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_stone }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_sugar }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_tea }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_tin }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_tobacco }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_wheat }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_wild_game }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_wine }
+        mnt_global_hide_building = { building_type = building_type:RGO_building_wool }
+    }
 }
