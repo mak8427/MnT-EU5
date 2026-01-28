@@ -1,0 +1,593 @@
+lateralview = {
+	name = "expand_raw_goods_lateralview"
+
+	blockoverride "panel_header" {
+		window_header_alt = {
+			blockoverride "window_header_alt_color_texture" {
+				using = color_production_texture
+			}
+			blockoverride "header_text" {
+				text = "RAW_GOOD_BUILDER_TT"
+			}
+		}
+	}
+
+	blockoverride "panel_content" {
+		vbox = {
+			using = layoutpolicy_expanding
+			using = bg_main_inner_alt
+			using = window_main_tabs_margin_alt
+			
+			filtered_sorted_list = {
+				margin_top = 10
+				datacontext = "[ExpandRawGoodsLateralView.GetRawGoodLocationsSortSearch]"
+				name = "raw_good_location_filtered_list"
+
+				blockoverride "subheader_upper_divider" {
+					spacing = 5
+
+					widget = {
+						visible = "[ExpandRawGoodsLateralView.IsMarketFilterEnabled]"
+						layoutpolicy_horizontal = expanding
+						size = { -1 70 }
+
+						hbox = {
+							datacontext = "[ExpandRawGoodsLateralView.GetSelectedMarket]"
+
+							using = bg_market_card
+							using = bg_cabinet_card_frame
+
+							market_card = {
+								blockoverride "market_card_margins" {
+									margin = {5 5}
+									margin_right = 0
+								}
+							}
+
+							market_card_right_buttons = {
+								blockoverride "market_filter_buttons" {
+									vbox = {
+										layoutpolicy_vertical = expanding
+										spacing = 3
+		
+										filter_button_alt = {
+											size = { 23 23 }
+											blockoverride "filter_button_action" {
+												action_tooltip = {
+													click_type = left
+													click_mode = single
+													title = "TOGGLE_MARKET_SELECTION"
+													on_action = "[ExpandRawGoodsLateralView.ToggleExpandRawGoodsSelectMarket(PdxGuiWidget.FindParent('raw_good_location_filtered_list').Self)]"
+												}
+
+												action_tooltip = {
+													click_type = right
+													click_mode = single
+													title = "SCROLL_CAPITAL_MARKET_FILTER"
+													on_action = "[SelectDefaultFocusMarket]"
+												}
+											}
+											tooltipwidget = { BasicFunctionalTooltip = {} }
+														
+											blockoverride "glow_visible" {
+												visible = "[ExpandRawGoodsLateralView.IsExpandRawGoodsSelectMarketOpened(PdxGuiWidget.FindParent('raw_good_location_filtered_list').Self)]"
+											}
+										}
+		
+										button = {
+											using = market_filter_button
+											enabled = "[ExpandRawGoodsLateralView.IsMarketFilterEnabled]"
+											blockoverride "functional_tooltip" {
+												tooltipwidget = { BasicFunctionalTooltip = {} }
+				
+												action_tooltip = {
+													click_type = left
+													click_mode = single
+													enabled = "[ExpandRawGoodsLateralView.IsMarketFilterEnabled]"
+													title = "REMOVE_MARKET_FILTER"
+													on_action = "[ExpandRawGoodsLateralView.RemoveMarketFilter]"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+					widget = {
+						visible = "[Not(ExpandRawGoodsLateralView.IsMarketFilterEnabled)]"
+						layoutpolicy_horizontal = expanding
+						size = { -1 50 }
+
+						button_regular = {
+							size = { 100% 50 }
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "TOGGLE_MARKET_SELECTION"
+								on_action = "[ExpandRawGoodsLateralView.ToggleExpandRawGoodsSelectMarket(PdxGuiWidget.FindParent('raw_good_location_filtered_list').Self)]"
+							}
+
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "SCROLL_CAPITAL_MARKET_FILTER"
+								on_action = "[SelectDefaultFocusMarket]"
+							}
+							
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								spacing = 5
+
+								margin_left = 8
+								margin_right = 5
+
+								text_single = {
+									align = center|nobaseline
+									layoutpolicy_horizontal = expanding
+									autoresize = no
+									fontsize_min = 12
+									text = "NOT_FILTERED_BY_MARKET"
+								}
+							}
+
+							filter_button_alt = {
+								size = { 25 25 }
+								parentanchor = right|vcenter
+								position = {-10 0}
+								blockoverride "filter_button_action" {
+									action_tooltip = {
+										click_type = left
+										click_mode = single
+										title = "TOGGLE_MARKET_SELECTION"
+										on_action = "[ExpandRawGoodsLateralView.ToggleExpandRawGoodsSelectMarket(PdxGuiWidget.FindParent('raw_good_location_filtered_list').Self)]"
+									}
+
+									action_tooltip = {
+										click_type = right
+										click_mode = single
+										title = "SCROLL_CAPITAL_MARKET_FILTER"
+										on_action = "[SelectDefaultFocusMarket]"
+									}
+								}
+								tooltipwidget = { BasicFunctionalTooltip = {} }
+								
+								blockoverride "glow_visible" {
+									visible = "[ExpandRawGoodsLateralView.IsExpandRawGoodsSelectMarketOpened(PdxGuiWidget.FindParent('raw_good_location_filtered_list').Self)]"
+								}
+							}
+						}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						ignoreinvisible = yes
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+							size = { -1 40 }
+							visible = "[ExpandRawGoodsLateralView.HasLastExpandingLocationItem]"
+
+							header_button_left = {
+								size = { 100% 100% }
+
+								datacontext = "[ExpandRawGoodsLateralView.GetExpandRankingItems]"
+								datacontext = "[ExpandRawGoodsLateralView.GetLastExpandingLocationItem]"
+								datacontext = "[RawGoodLocationItem.GetLocation]"
+								datacontext = "[Location.GetRawMaterial]"
+								datacontext = "[Location.GetMarket]"
+								
+								blockoverride "icon_overlay" {}
+								blockoverride "icon_texture" {
+									texture = "[GetGoodsIcon(Goods.Self)]"
+								}
+
+								blockoverride "text_top" {
+									text = "UNQUEUE_RGO_IN_LAST_LOCATION_ACTION_BUTTON"
+									fontsize = 13
+								}
+
+								blockoverride "text_bottom" {
+									visible = no
+								}
+
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									click_modifier = default
+
+									enabled = "[RawGoodLocationItem.CanReduceRGO]"
+									title = "LOCATION_VIEW_UNQUEUE_RGO_TITLE_LOCATION"
+									description = "[RawGoodLocationItem.GetReduceRGOTooltip]"
+									on_action = "[RawGoodLocationItem.ReduceRGO]"
+								}
+
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									click_modifier = ctrl
+
+									enabled = "[RawGoodLocationItem.CanReduceRGO]"
+									title = "LOCATION_VIEW_UNQUEUE_LATESTS_RGOS"
+									description = "[RawGoodLocationItem.GetReduceRGOTooltip]"
+									on_action = "[ExpandRawGoodsLateralView.CancelAllLastExpandingLocations]"
+								}
+
+								tooltipwidget = {
+									using = deuque_last_constructions_tt
+									blockoverride "title_text" {
+										text = "UNQUEUE_RGO_IN_LASTEST_TITLE"
+									}
+								}
+							}
+						}
+						
+						header_button_left = {
+							layoutpolicy_horizontal = expanding
+
+							visible = "[Not(ExpandRawGoodsLateralView.HasLastExpandingLocationItem)]"
+							enabled = no
+							
+							blockoverride "icon_overlay" {}
+							blockoverride "icon_texture" {
+								visible = no
+							}
+
+							blockoverride "text_top" {
+								text = "UNQUEUE_RGO_IN_LAST_LOCATION_ACTION_BUTTON"
+								fontsize = 13
+							}
+
+							blockoverride "text_bottom" {
+								visible = no
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								click_modifier = default
+
+								enabled = no
+								title = "LOCATION_VIEW_UNQUEUE_RGO_TITLE"
+								description = "[MakeItFailLoc('LOCATION_VIEW_REDUCE_RGO_NONE')]"
+							}
+
+							tooltipwidget = {
+								BasicFunctionalTooltip = {}
+							}
+						}
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+							size = { -1 40 }
+							visible = "[ExpandRawGoodsLateralView.HasBestExpandingLocationItem]"
+							header_button_right = {
+								size = { 100% 100% }
+								
+								datacontext = "[ExpandRawGoodsLateralView.GetExpandRankingItems]"
+								datacontext = "[ExpandRawGoodsLateralView.GetBestExpandingLocationItem]"
+								datacontext = "[RawGoodLocationItem.GetLocation]"
+								datacontext = "[Location.GetRawMaterial]"
+								datacontext = "[Location.GetMarket]"
+
+								blockoverride "icon_overlay" {}
+								blockoverride "icon_texture" {
+									texture = "[GetGoodsIcon(Goods.Self)]"
+								}
+
+								blockoverride "text_top" {
+									text = "EXPAND_RGO_IN_BEST_LOCATION_ACTION_BUTTON"
+									fontsize = 13
+								}
+
+								blockoverride "text_bottom" {
+									visible = no
+								}
+
+								action_tooltip = {
+									click_type = left
+									click_mode = single	
+									click_modifier = default
+
+									enabled = "[RawGoodLocationItem.CanUpgradeRGO]"
+									title = "EXPAND_RGO_IN_BEST_LOCATION_ACTION"
+									description = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
+									cost = "[Location.GetRGOCost]"
+									conditions = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
+									on_action = "[ExpandRawGoodsLateralView.ExpandBestFromRankingItemsDefault]"
+								}
+
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									click_modifier = ctrl
+
+									enabled = "[RawGoodLocationItem.CanUpgradeRGO]"
+									title = "EXPAND_RGO_IN_BEST_LOCATION_ACTION_CTRL"
+									description = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
+									cost = "[Location.GetRGOCost]"
+									conditions = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
+									on_action = "[ExpandRawGoodsLateralView.ExpandBestFromRankingItemsCtrl]"
+								}
+
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									click_modifier = shift
+									
+									enabled = "[RawGoodLocationItem.CanUpgradeRGO]"
+									title = "EXPAND_RGO_IN_BEST_LOCATION_ACTION_SHIFT"
+									description = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
+									cost = "[Location.GetRGOCost]"
+									conditions = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
+									on_action = "[ExpandRawGoodsLateralView.ExpandBestFromRankingItemsShift]"
+								}
+
+								tooltipwidget = {
+									using = expand_rgo_ranking_tt
+									blockoverride "extra_rgo_content" {}
+								}
+							}
+						}
+
+						header_button_right = {
+							layoutpolicy_horizontal = expanding
+							
+							visible = "[Not(ExpandRawGoodsLateralView.HasBestExpandingLocationItem)]"
+							enabled = no
+							datacontext = "[ExpandRawGoodsLateralView.GetExpandRankingItems]"
+
+							blockoverride "icon_overlay" {}
+							blockoverride "icon_texture" {
+								visible = no
+							}
+
+							blockoverride "text_top" {
+								text = "EXPAND_RGO_IN_BEST_LOCATION_ACTION_BUTTON"
+								fontsize = 13
+							}
+
+							blockoverride "text_bottom" {
+								visible = no
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								
+								enabled = no
+								title = "LOCATION_VIEW_EXPAND_RGO_TITLE"
+								description = "EXPAND_RGO_IN_BEST_LOCATION_ACTION_EMPTY"
+							}
+
+							tooltipwidget = {
+								BasicFunctionalTooltip = {}
+							}
+						}
+					}
+				}
+
+				blockoverride "sort_buttons_filtered_list" {
+					sort_by_key_button = {
+						name = "name"
+						using = layoutpolicy_expanding
+					}
+
+					sort_by_key_button = {
+						name = "profit"
+						layoutpolicy_vertical = expanding
+						size = { 140 -1 }
+					}
+
+					sort_by_key_button = {
+						name = "number_building"
+						layoutpolicy_vertical = expanding
+						size = { 130 -1 }
+					}
+				}
+
+				blockoverride "scroll_list_is_empty" {
+					visible = "[IsDataModelEmpty(GetPlayer.MakeScope.GetList('mnt_rgo_buildings_list'))]"
+				}
+
+				blockoverride "scroll_list_is_empty_text" {
+					text = "EXPAND_RAW_GOODS_SCROLL_LIST_EMPTY"
+				}
+
+				blockoverride "scroll_list_layout" {
+					fixedgridbox = {
+						addrow = 46
+						addcolumn = 100%
+						datamodel = "[GetPlayer.MakeScope.GetList('mnt_rgo_buildings_list')]"
+						item = {
+							widget = {
+								size = { 100% 46 }
+								widget = {
+									size = { 98% 42 }
+									parentanchor = center
+									using = bg_paper_card
+									hbox = {
+										using = layoutpolicy_expanding
+										margin = { 8 0 }
+										spacing = 10
+										using = rgo_building_entry
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+template rgo_building_entry {
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		spacing = 10
+		datacontext = "[Building]"
+
+		widget = {
+			size = { 36 36 }
+			using = bg_circle_outline
+			blockoverride "inside_color" {
+				modify_texture = {
+					using = color_dark_brown_texture
+					blend_mode = multiply
+				}
+			}
+			blockoverride "frame_size" {
+				texture = "gfx/interface/component_tiles/hud_corners/circle_frame_alt_thin.dds"
+				texture_density = 2
+				margin = {1 1}
+			}
+			icon = {
+				size = { 26 26 }
+				parentanchor = center
+				texture = "[GetBuildingIcon(Building.GetType)]"
+				glow = {
+					name = "drop_shadow"
+					glow_radius = 3
+					color = {0.0 0.0 0.0 1.0}
+					alpha = 0.3
+				}
+			}
+		}
+
+		text_single = {
+			layoutpolicy_horizontal = expanding
+			autoresize = no
+			align = left|nobaseline
+			default_format = "#yellow_titles"
+			datacontext = "[Building.GetLocation]"
+			text = "[Location.GetNameWithNoTooltip]"
+			onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Location.Self)]"
+			tooltipwidget = {
+				using = location_simple_tooltip
+			}
+		}
+
+		text_single = {
+			size = { 120 -1 }
+			align = right|nobaseline
+			raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
+		}
+
+		hbox = {
+			size = { 130 -1 }
+			layoutpolicy_horizontal = expanding
+			spacing = 6
+
+			text_single = {
+				align = right|nobaseline
+				visible = "[Not(GreaterThan_int32(Building.GetLevelsUnderConstruction, '(int32)0'))]"
+				raw_text = "[Building.GetLevel|0]"
+			}
+
+			text_single = {
+				align = right|nobaseline
+				visible = "[GreaterThan_int32(Building.GetLevelsUnderConstruction, '(int32)0')]"
+				raw_text = "[Building.GetLevel|0][Building.GetLevelsUnderConstruction|0+=]"
+			}
+
+			button_square_plus = {
+				size = { 21 21 }
+				enabled = "[CanBuildOrExpandBuilding(Building.GetType, Building.GetLocation)]"
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					enabled = "[CanBuildOrExpandBuilding(Building.GetType, Building.GetLocation)]"
+					title = "BUILDING_IN_LOCATION_ACTION"
+					description = "[CanBuildOrExpandBuildingInfo(Building.GetType, Building.GetLocation)]"
+					cost = "[GetBuildOrExpandBuildingCostValue(Building.GetType, Building.GetLocation)]"
+					on_action = "[BuildOrExpandBuildingDefault(Building.GetType, Building.GetLocation)]"
+				}
+				tooltipwidget = {
+					using = construct_building_in_location_tt
+				}
+			}
+		}
+	}
+}
+
+select_menu_left = {
+	datacontext = "[GetQuickVisibleMarkets(Player.Self)]"
+	blockoverride "menu_setup" {
+		name = "expand_raw_goods_select_market"
+	}
+
+	blockoverride "close_button" {
+		onclick = "[ExpandRawGoodsSelectMarket.OnClose]"
+	}
+
+	blockoverride "select_content" {
+		select_menu_header = {
+			blockoverride "select_menu_header_extra" {
+				button_checkbox_visibility = {
+					size = { 32 32 }
+					tooltipwidget = { 
+						LeftClickButtonTooltip = {
+							blockoverride "onclick_text" { text = "TOGGLE_INRANGE_MARKETS" }
+						}
+					}
+					checked = "[ExpandRawGoodsSelectMarket.Parent.Vars.Exists( 'inrange_markets')]"
+					onclick = "[ExpandRawGoodsSelectMarket.Parent.Vars.Toggle( 'inrange_markets')]"
+				}
+
+				text_single = {
+					using = Font_Type_Headers
+					using = Font_Size_Small
+					align = nobaseline
+					text = "INRANGE_MARKETS"
+				}
+			}
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+
+			datamodel = "[QuickVisibleMarkets.GetVisibleMarkets]"
+			item = {
+				widget = {
+					size = { 485 70 }
+					visible = "[Or3(GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0'), GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0'), And(ExpandRawGoodsSelectMarket.Parent.Vars.Exists( 'inrange_markets'), IsMarketInRange(Market.Self)))]"
+
+					hbox = {
+						using = bg_market_card
+						using = bg_cabinet_card_frame
+
+						market_card = {
+							blockoverride "market_card_title_action" {
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									title = "TOGGLE_MARKET_SELECTION"
+									on_action = "[ExpandRawGoodsSelectMarket.Parent.FilterByMarket(Market.Self)]"
+								}
+			
+								action_tooltip = {
+									click_type = right
+									click_mode = single
+			
+									cursor = "market_menu"
+									title = "CLICK_ACTION_MARKET_CONTEXT_MENU"
+									on_action = "[PdxGuiWidget.ToggleContextMenu]"
+								}
+			
+								onmousehierarchyenter = "[PdxGuiWidget.SetHighlightMarket(Market.Self)]"
+								ondoubleclick = "[PanToLocation(Market.GetCenterLocation)]"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

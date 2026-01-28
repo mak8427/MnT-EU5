@@ -1,0 +1,9 @@
+mnt_add_rgo_buildings_to_list = {
+	save_scope_as = mnt_rgo_buildings_owner
+	every_owned_location = {
+		every_buildings_in_location = {
+			limit = { building_type = $building_type$ }
+			scope:mnt_rgo_buildings_owner = { add_to_variable_list = { name = mnt_rgo_buildings_list target = this } }
+		}
+	}
+}
